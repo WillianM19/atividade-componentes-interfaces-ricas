@@ -11,5 +11,5 @@ export default function Checkbox(props: {
         className="w-4 h-4 rounded-md border border-gray-800/30"
       />
     </div>
-  )
+  );
 }
