@@ -8,7 +8,7 @@ interface TaskCardProps {
 
 export default function TaskCard({title, description}: TaskCardProps) {
   return (
-    <div className="border border-gray-800/30 rounded-md p-4 flex flex-col gap-4 flex-1">
+    <div className="border border-gray-800/30 rounded-md p-4 flex flex-col gap-4 flex-1 min-w-[50%]">
       <div className="flex justify-between">
         <div className="flex gap-2 items-center">
           <Checkbox />
