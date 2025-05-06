@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center mt-60 h-screen">
       <h1 className="text-3xl font-bold">Lista de Tarefas</h1>
 
       <div className="border border-gray-800/30 rounded-md mt-3 w-[60vw] p-4 flex flex-col gap-8">
