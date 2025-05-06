@@ -1,18 +1,18 @@
-interface InputProps {
-  value?: string;
-  placeholder?: string;
-  onChange?: (value: string) => void;
-}
+import { forwardRef, TextareaHTMLAttributes } from "react";
 
-export default function Textbox(props: InputProps) {
+interface TextboxProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+const Textbox = forwardRef<HTMLTextAreaElement, TextboxProps>(({ placeholder, ...rest }, ref) => {
   return (
     <div>
       <textarea
-        value={props.value}
-        placeholder={props.placeholder || "Placeholder"}
-        onChange={(e) => props.onChange?.(e.target.value)}
+        ref={ref}
+        placeholder={placeholder || "Placeholder"}
         className="w-full p-2 rounded-md border border-gray-800/30"
+        {...rest}
       />
     </div>
   );
-}
+});
+
+export default Textbox;

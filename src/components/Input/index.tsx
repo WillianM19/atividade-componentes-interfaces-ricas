@@ -1,19 +1,18 @@
-interface InputProps {
-  value?: string;
-  placeholder?: string;
-  onChange?: (value: string) => void;
-}
+import { forwardRef, InputHTMLAttributes } from "react";
 
-export default function Input(props: InputProps) {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(({ placeholder, ...rest }, ref) => {
   return (
     <div>
       <input
-        type="text"
-        value={props.value}
-        placeholder={props.placeholder || "Placeholder"}
-        onChange={(e) => props.onChange?.(e.target.value)}
+        ref={ref}
+        placeholder={placeholder || "Placeholder"}
         className="w-full p-2 rounded-md border border-gray-800/30"
+        {...rest}
       />
     </div>
   );
-}
+});
+
+export default Input;
