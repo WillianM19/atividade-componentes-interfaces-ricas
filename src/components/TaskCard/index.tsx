@@ -4,9 +4,11 @@ import Checkbox from "../Checkbox";
 interface TaskCardProps {
   title: string;
   description: string;
+  onEdit?: () => void;
+  onDelete?: () => void;
 }
 
-export default function TaskCard({title, description}: TaskCardProps) {
+export default function TaskCard({ title, description, onEdit, onDelete }: TaskCardProps) {
   return (
     <div className="border border-gray-800/30 rounded-md p-4 flex flex-col gap-4 flex-1 min-w-[50%]">
       <div className="flex justify-between">
@@ -15,7 +17,7 @@ export default function TaskCard({title, description}: TaskCardProps) {
           <h1 className="text-md font-bold">{title}</h1>
         </div>
         <div className="flex gap-5">
-          <Button noBackground>
+          <Button noBackground onClick={onEdit}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -31,7 +33,7 @@ export default function TaskCard({title, description}: TaskCardProps) {
               />
             </svg>
           </Button>
-          <Button noBackground>
+          <Button noBackground onClick={onDelete}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
