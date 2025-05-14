@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "./components/Button";
 import Input from "./components/Input";
@@ -14,6 +14,20 @@ interface TaskType {
 function App() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const tasks = localStorage.getItem("tasks");
+    if (tasks) {
+      setTasks(JSON.parse(tasks));
+      console.log("Tarefas carregadas do localStorage");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (tasks.length > 0) {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+  }, [tasks]);
 
   const { register, handleSubmit, reset, setValue } = useForm<{
     title: string;
